@@ -3,8 +3,7 @@
 config & plugins for vim
 
 
-## Prerequisite
-
+## Getting started
 
 ### Use the latest vim
 
@@ -19,6 +18,13 @@ Change the alias of `vi` in `.bashrc`
 ```
 alias vi='/usr/local/bin/vim'
 ```
+
+### Move the folder & config file
+
+1. Make sure the folder is in the root as `~/.vim`.
+
+2. Copy `.vimrc` file to root by `cp .vimrc ~/.vimrc``
+
 
 
 ## Plugins
