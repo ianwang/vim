@@ -26,7 +26,7 @@ Plugin 'ElmCast/elm-vim'
 Plugin 'uarun/vim-protobuf'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'Quramy/tsuquyomi'
+Plugin 'duganchen/vim-soy'
 Plugin 'thoughtbot/vim-rspec'
   "map <Leader>t :call RunCurrentSpecFile()<CR>
   "map <Leader>s :call RunNearestSpec()<CR>
@@ -43,10 +43,10 @@ Plugin 'janko-m/vim-test'
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
   nmap <silent> <leader>a :TestSuite<CR>
-  "let test#ruby#rspec#file_pattern = 'test_.*\.rb'
-  "let test#ruby#rspec#executable = './bin/api_test_runner'
-  "let test#javascript#mocha#executable = 'NODE_ENV=test ./node_modules/mocha/bin/mocha --opts .mocharc'
+  let test#javascript#jest#file_pattern = '.tests\.[tsx|ts]'
+  let test#ruby#rspec#file_pattern = 'test_.*\.rb'
   let test#ruby#rspec#executable = './bin/rspec'
+Plugin 'tpope/vim-commentary'
 
 " THEME
 Plugin 'tomasr/molokai'
@@ -68,13 +68,20 @@ Plugin 'dyng/ctrlsf.vim'
   let g:ctrlsf_context = '-C 4 -B 0 -A 2'
 
 Plugin 'w0rp/ale'
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_fixers = {
-  \   'javascript': ['eslint'],
-  \}
+  let g:ale_lint_delay = 200
+  let g:ale_completion_enabled = 1
+  let g:ale_completion_tsserver_autoimport = 1
   nmap <silent> <leader>e :ALENext<CR>
   nmap <silent> <leader>w :ALEPrevious<CR>
   nmap <silent> <leader>f :ALEFix<CR>
+  nmap <silent> <leader>d :ALEGoToDefinition<CR>
+  nmap <silent> <leader>h :ALEHover<CR>
+
+Plugin 'uber/prototool', { 'rtp':'vim/prototool' }
+  let g:ale_linters = {
+  \   'go': ['golint'],
+  \   'proto': ['prototool-lint'],
+  \}
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -91,7 +98,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plugin 'junegunn/fzf.vim'
   map <c-p> :Files<CR>
-  map <c-f> :Find<CR>
+  map <c-f> :Rg<CR>
   map <c-b> :Buffers<CR>
   map <c-c> :Commits<CR>
 
