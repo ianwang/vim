@@ -1,7 +1,5 @@
 set nocompatible
 set t_Co=256
-syntax on
-hi Visual term=reverse cterm=reverse guibg=Grey
 
 set background=dark
 set mouse=a
@@ -11,6 +9,7 @@ if has("gui_macvim")
   set shell=/bin/bash\ -l
 endif
 
+set rtp+=~/.fzf
 " http://amix.dk/vim/vimrc.html
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,7 +69,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -170,14 +169,14 @@ autocmd BufReadPost *
 
 " Close the current buffer
 map <leader>q :bd<cr>
-" Open the current buffer
+" Go to the next buffer
 map <leader>b :bn<cr>
 
-" Useful mappings for managing tabs
+" Useful mappings for tabs
 map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+map <leader>tl :tabnext<cr>
+map <leader>tk :tabprev<cr>
+map <leader>tq :tabclose<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -218,3 +217,8 @@ endif
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+syntax on
+hi Visual term=reverse cterm=reverse guibg=Grey
+
+" Shift+F3 to open file in the Finder
+map <S-F3> :silent execute '![ -f "%:p" ] && open -R "%:p" \|\| open "%:p:h"'<CR>

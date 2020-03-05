@@ -12,7 +12,6 @@ Plugin 'elzr/vim-json'
   hi! def link jsonKeyword Identifier
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'wavded/vim-stylus'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pangloss/vim-javascript'
@@ -43,7 +42,7 @@ Plugin 'janko-m/vim-test'
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
   nmap <silent> <leader>a :TestSuite<CR>
-  let test#javascript#jest#file_pattern = '.tests\.[tsx|ts]'
+  let test#javascript#jest#file_pattern = 'tests\.ts'
   let test#ruby#rspec#file_pattern = 'test_.*\.rb'
   let test#ruby#rspec#executable = './bin/rspec'
 Plugin 'tpope/vim-commentary'
