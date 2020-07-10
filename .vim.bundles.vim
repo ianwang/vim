@@ -1,4 +1,3 @@
-" Load Vundle. Manages all of the bundles.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,7 +9,6 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'elzr/vim-json'
   hi! def link jsonKeyword Identifier
-Plugin 'nikvdp/ejs-syntax'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'editorconfig/editorconfig-vim'
@@ -21,23 +19,21 @@ Plugin 'posva/vim-vue'
 Plugin 'slim-template/vim-slim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
-Plugin 'ElmCast/elm-vim'
 Plugin 'uarun/vim-protobuf'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'duganchen/vim-soy'
-Plugin 'thoughtbot/vim-rspec'
-  "map <Leader>t :call RunCurrentSpecFile()<CR>
-  "map <Leader>s :call RunNearestSpec()<CR>
-  "map <Leader>l :call RunLastSpec()<CR>
-  "map <Leader>a :call RunAllSpecs()<CR>
-  "let g:rspec_command = "!bundle exec rspec {spec} -f d"
-  "
 Plugin 'tpope/vim-haml'
 Plugin 'stephpy/vim-yaml'
 Plugin 'tfnico/vim-gradle'
 Plugin 'ap/vim-css-color'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'dunckr/js_alternate.vim'
+  nnoremap <leader>r :call js_alternate#run()<cr>
+  let g:js_alternate#src_types = ['lib', 'src', 'app', 'scripts', 'js']
+  let g:js_alternate#test_types = ['tests', 'test', 'spec', 'features']
+  let g:js_alternate#extension_types = ['js', 'jsx', 'ts', 'tsx']
+
 Plugin 'janko-m/vim-test'
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
@@ -66,7 +62,7 @@ Plugin 'dyng/ctrlsf.vim'
   let g:ctrlsf_winsize = '40%'
   let g:ctrlsf_context = '-C 4 -B 0 -A 2'
 
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
   let g:ale_lint_delay = 200
   let g:ale_completion_enabled = 1
   let g:ale_completion_tsserver_autoimport = 1
@@ -75,12 +71,16 @@ Plugin 'w0rp/ale'
   nmap <silent> <leader>f :ALEFix<CR>
   nmap <silent> <leader>d :ALEGoToDefinition<CR>
   nmap <silent> <leader>h :ALEHover<CR>
-
-Plugin 'uber/prototool', { 'rtp':'vim/prototool' }
+  let g:ale_fix_on_save = 1
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace', 'eslint'],
+  \}
   let g:ale_linters = {
   \   'go': ['golint'],
   \   'proto': ['prototool-lint'],
   \}
+
+Plugin 'uber/prototool', { 'rtp':'vim/prototool' }
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
