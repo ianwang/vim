@@ -91,6 +91,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
 Plug 'junegunn/fzf.vim'
+  let g:fzf_preview_window = ''
   map <c-p> :Files<CR>
   map <c-f> :Rg<CR>
   map <c-b> :Buffers<CR>

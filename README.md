@@ -19,18 +19,14 @@ Change the alias of `vi` in `.bashrc`
 alias vi='/usr/local/bin/vim'
 ```
 
-### Move the folder & config file
+### Change the `.vimrc` file
 
-1. Make sure the folder is in the root as `~/.vim`.
+1. You might want to backup your current `.vimrc`. `mv ~/.vimrc ~/.vimrc_backup`
 
-2. Copy `.vimrc` file to root by `cp .vimrc ~/.vimrc``
+2. Create a symlink `ln -s .vimrc ~/.vimrc`
 
 
-
-## Plugins
-
-### Vundle
-Install [Vundle](https://github.com/VundleVim/Vundle.vim)
+## Other dependecies
 
 ### Typescript
 ```
@@ -39,4 +35,3 @@ npm install typescript -g
 
 ### fzf
 Install [rg](https://github.com/BurntSushi/ripgrep)
-
