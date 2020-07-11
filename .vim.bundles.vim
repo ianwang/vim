@@ -2,26 +2,17 @@ call plug#begin('~/.vim/plugged')
 
 let mapleader = ","
 
+Plug 'sheerun/vim-polyglot'
 Plug 'elzr/vim-json'
   hi! def link jsonKeyword Identifier
-Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-  let g:jsx_ext_required = 0
-Plug 'posva/vim-vue'
-Plug 'slim-template/vim-slim'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'uarun/vim-protobuf'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'duganchen/vim-soy'
-Plug 'tpope/vim-haml'
-Plug 'stephpy/vim-yaml'
 Plug 'tfnico/vim-gradle'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dunckr/js_alternate.vim'
   nnoremap <leader>r :call js_alternate#run()<cr>
@@ -29,14 +20,12 @@ Plug 'dunckr/js_alternate.vim'
   let g:js_alternate#test_types = ['tests', 'test', 'spec', 'features']
   let g:js_alternate#extension_types = ['js', 'jsx', 'ts', 'tsx']
 
-Plug 'janko-m/vim-test'
+Plug 'vim-test/vim-test', { 'commit': 'e9e824cf3f22fa1cddabb7ef739f2481436c3924'}
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
   nmap <silent> <leader>a :TestSuite<CR>
   let test#javascript#jest#file_pattern = 'tests\.ts'
-  let test#ruby#rspec#file_pattern = 'test_.*\.rb'
-  let test#ruby#rspec#executable = './bin/rspec'
-Plug 'tpope/vim-commentary'
+  let test#strategy = 'vimterminal'
 
 " THEME
 Plug 'tomasr/molokai'
