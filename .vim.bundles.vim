@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 let mapleader = ","
 
 Plug 'sheerun/vim-polyglot'
+  let g:polyglot_disabled = ['js', 'jsx', 'ts', 'tsx']
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
   hi! def link jsonKeyword Identifier
 Plug 'editorconfig/editorconfig-vim'
@@ -20,10 +23,11 @@ Plug 'dunckr/js_alternate.vim'
   let g:js_alternate#test_types = ['tests', 'test', 'spec', 'features']
   let g:js_alternate#extension_types = ['js', 'jsx', 'ts', 'tsx']
 
+Plug 'tpope/vim-projectionist'
+  nmap <silent> <leader>a :A<CR>
 Plug 'vim-test/vim-test', { 'commit': 'e9e824cf3f22fa1cddabb7ef739f2481436c3924'}
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
-  nmap <silent> <leader>a :TestSuite<CR>
   let test#javascript#jest#file_pattern = 'tests\.ts'
   let test#strategy = 'vimterminal'
 
@@ -46,15 +50,17 @@ Plug 'dyng/ctrlsf.vim'
   let g:ctrlsf_winsize = '40%'
   let g:ctrlsf_context = '-C 4 -B 0 -A 2'
 
+Plug 'uber/prototool', { 'rtp':'vim/prototool' }
+
 Plug 'dense-analysis/ale'
   let g:ale_lint_delay = 200
   let g:ale_completion_enabled = 1
-  let g:ale_completion_tsserver_autoimport = 1
+  let g:ale_completion_autoimport = 1
+  let g:ale_hover_cursor = 0
   nmap <silent> <leader>e :ALENext<CR>
   nmap <silent> <leader>w :ALEPrevious<CR>
   nmap <silent> <leader>f :ALEFix<CR>
   nmap <silent> <leader>d :ALEGoToDefinition<CR>
-  nmap <silent> <leader>h :ALEHover<CR>
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace', 'eslint'],
@@ -63,8 +69,11 @@ Plug 'dense-analysis/ale'
   \   'go': ['golint'],
   \   'proto': ['prototool-lint'],
   \}
-
-Plug 'uber/prototool', { 'rtp':'vim/prototool' }
+  " let g:ale_pattern_options = {
+  " \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+  " \ '\.proto$': {'ale_linters': [], 'ale_fixers': []},
+  " \}
+  " let g:ale_pattern_options_enabled = 1
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -80,6 +89,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
 Plug 'junegunn/fzf.vim'
+  let g:fzf_layout = { 'down': '40%' }
   let g:fzf_preview_window = ''
   map <c-p> :Files<CR>
   map <c-f> :Rg<CR>
