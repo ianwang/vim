@@ -52,6 +52,8 @@ Plug 'dyng/ctrlsf.vim'
 
 Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 
+Plug 'ycm-core/YouCompleteMe'
+
 Plug 'dense-analysis/ale'
   let g:ale_lint_delay = 200
   let g:ale_completion_enabled = 1
