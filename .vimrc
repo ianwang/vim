@@ -167,6 +167,9 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 " set viminfo^=%
 
+" Copy the current file path
+map <leader>f :let @+ = expand('%:p')<cr>
+
 " Close the current buffer
 map <leader>q :bd<cr>
 " Go to the next buffer

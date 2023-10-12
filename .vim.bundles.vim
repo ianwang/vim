@@ -39,8 +39,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim' " Ctrl + y + ,
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/HTML-AutoCloseTag'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  map <F2> :NERDTreeToggle<CR>
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
+  map <F2> :NERDTreeFind<CR>
   " close vim if the only window left open is a NERDTree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -65,11 +65,12 @@ Plug 'dense-analysis/ale'
   nmap <silent> <leader>d :ALEGoToDefinition<CR>
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace', 'eslint'],
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['eslint'],
   \}
   let g:ale_linters = {
   \   'go': ['golint'],
-  \   'proto': ['prototool-lint'],
+  \   'proto': ['buf-lint', 'protoc-gen-lint', 'protolint'],
   \}
   " let g:ale_pattern_options = {
   " \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
@@ -88,7 +89,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   " --hidden: Search hidden files and folders
   " --follow: Follow symlinks
   " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!{.git/*,node_modules/*}"'
 
 Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'down': '40%' }
