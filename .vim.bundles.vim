@@ -53,6 +53,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 
 Plug 'ycm-core/YouCompleteMe'
+  nmap <leader>s <Plug>(YCMFindSymbolInWorkspace)
 
 Plug 'dense-analysis/ale'
   let g:ale_lint_delay = 200
@@ -63,6 +64,7 @@ Plug 'dense-analysis/ale'
   nmap <silent> <leader>w :ALEPrevious<CR>
   nmap <silent> <leader>f :ALEFix<CR>
   nmap <silent> <leader>d :ALEGoToDefinition<CR>
+  nmap <silent> <leader>r :ALEFindReferences<CR>
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -101,9 +103,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'easymotion/vim-easymotion'
   let g:EasyMotion_do_mapping = 0 " Disable default mappings
-  " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-  " `s{char}{label}`
-  map <Leader>s <Plug>(easymotion-f)
   let g:EasyMotion_smartcase = 1 " Turn on case insensitive feature
   " JK motions: Line/Word motions
   map <Leader>k <Plug>(easymotion-bd-w)
